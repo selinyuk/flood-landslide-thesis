@@ -31,13 +31,9 @@ Master's thesis analysis of global flood and landslide mortality patterns using 
 
 ## How to Run
 
-1. Place your raw data files in `data/` (filenames defined in `config/config.yml`).
-2. Make sure the WHO sheet name in `config/config.yml` matches the exact tab name in your Excel file:
-   ```yaml
-   who_sheet_name: "WHO Data"   # change this to match your sheet tab name
-   ```
-3. Open R and set your working directory to the project root.
-4. Run the full pipeline:
+1. Clone or download this repository
+2. Open R and set your working directory to the project root
+3. Run the full pipeline:
 
 ```r
 source("run_all.R")
