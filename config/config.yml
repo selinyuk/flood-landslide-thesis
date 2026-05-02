@@ -7,6 +7,8 @@ paths:
   emdat_sheet:           "EM-DAT Data"
   population_csv:        "data/world_bank_population.csv"
   world_bank_income_xlsx: "data/world_bank_income.xlsx"
+  who_sheet_name:  "WHO 2021"
+  who_sheet_index: ~
 
 figures:
   dpi:    300

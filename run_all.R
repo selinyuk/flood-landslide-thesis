@@ -12,7 +12,8 @@ scripts <- c(
   "scripts/04_temporal_long_term.R",
   "scripts/05_spatial_analysis.R",
   "scripts/06_flood_landslide_correlation.R",
-  "scripts/07_socioeconomic_analysis.R"
+  "scripts/07_socioeconomic_analysis.R",
+  "scripts/08_who_ranking.R"
 )
 
 for (s in scripts) {

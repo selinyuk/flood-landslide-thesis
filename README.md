@@ -6,42 +6,47 @@ Master's thesis analysis of global flood and landslide mortality patterns using 
 
 ```
 ├── config/
-│   └── config.yml              # Paths, figure settings, random seed
-├── data/                       # Raw input data (not committed to Git)
-│   ├── emdat.xlsx
+│   └── config.yml                   # Paths, figure settings, random seed
+├── data/                            # Raw input data
+│   ├── emdat.xlsx                   # EM-DAT data + WHO sheet (see config)
 │   ├── world_bank_population.csv
 │   └── world_bank_income.xlsx
 ├── R/
-│   └── helpers.R               # Shared utility functions
+│   └── helpers.R                    # Shared utility functions
 ├── scripts/
-│   ├── 00_setup.R              # Packages, config, master dataset
-│   ├── 01_summary_statistics.R # High-fatality events & descriptive stats
-│   ├── 02_subtype_analysis.R   # Subtype shares & fatality-frequency ratio
-│   ├── 03_temporal_intra_annual.R  # Seasonal & monthly patterns
-│   ├── 04_temporal_long_term.R # Yearly trends & Poisson regression
-│   ├── 05_spatial_analysis.R   # Choropleth maps & subregional charts
-│   ├── 06_flood_landslide_correlation.R  # Cross-country quantile regression
-│   └── 07_socioeconomic_analysis.R       # Income groups & human/economic loss
+│   ├── 00_setup.R                   # Packages, config, master dataset
+│   ├── 01_summary_statistics.R      # High-fatality events & descriptive stats
+│   ├── 02_subtype_analysis.R        # Subtype shares & fatality-frequency ratio
+│   ├── 03_temporal_intra_annual.R   # Seasonal & monthly patterns
+│   ├── 04_temporal_long_term.R      # Yearly trends & Poisson regression
+│   ├── 05_spatial_analysis.R        # Choropleth maps & subregional charts
+│   ├── 06_flood_landslide_correlation.R   # Cross-country quantile regression
+│   ├── 07_socioeconomic_analysis.R        # Income groups & human/economic loss
+│   └── 08_who_ranking.R                   # WHO cause-of-death ranking vs disasters
 ├── output/
-│   ├── figures/                # PNG plots (generated)
-│   └── tables/                 # XLSX tables (generated)
-└── run_all.R                   # Master runner — executes all scripts in order
+│   ├── figures/                     # PNG plots (generated on run)
+│   └── tables/                      # XLSX tables (generated on run)
+└── run_all.R                        # Master runner — executes all scripts in order
 ```
 
 ## How to Run
 
-1. Place your raw data files in `data/` (see filenames in `config/config.yml`).
-2. Open R and set your working directory to the project root.
-3. Run the full pipeline:
+1. Place your raw data files in `data/` (filenames defined in `config/config.yml`).
+2. Make sure the WHO sheet name in `config/config.yml` matches the exact tab name in your Excel file:
+   ```yaml
+   who_sheet_name: "WHO Data"   # change this to match your sheet tab name
+   ```
+3. Open R and set your working directory to the project root.
+4. Run the full pipeline:
 
 ```r
 source("run_all.R")
 ```
 
-Or run individual scripts independently:
+Or run a single script independently:
 
 ```r
-source("scripts/04_temporal_long_term.R")
+source("scripts/08_who_ranking.R")
 ```
 
 ## Data Sources
@@ -49,7 +54,8 @@ source("scripts/04_temporal_long_term.R")
 | Dataset | Source |
 |---------|--------|
 | EM-DAT disaster events | CRED — Centre for Research on the Epidemiology of Disasters |
-| Population estimates | World Bank DataBank (`SP.POP.TOTL`, 2025) |
+| WHO cause-of-death statistics | WHO Global Health Estimates (2021), simplified version in emdat.xlsx |
+| Population estimates | World Bank DataBank (`SP.POP.TOTL`, 2021/2025) |
 | Income classifications | World Bank Atlas method (2024 GNI per capita) |
 
 ## R Environment
@@ -61,4 +67,4 @@ Key packages: `dplyr`, `tidyr`, `ggplot2`, `readxl`, `openxlsx`, `quantreg`, `gg
 
 ## Reproducibility
 
-All analyses are fully scripted. `run_all.R` executes scripts 01–07 in sequence, each sourcing `scripts/00_setup.R` for a consistent environment. The random seed is set in `config/config.yml`.
+All analyses are fully scripted. `run_all.R` executes scripts 01–08 in sequence, each sourcing `scripts/00_setup.R` for a consistent environment. The random seed is set in `config/config.yml`.
