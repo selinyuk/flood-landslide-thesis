@@ -3,13 +3,13 @@ project:
   seed: 42
 
 paths:
-  emdat_xlsx:            "data/emdat.xlsx"
+  emdat_xlsx:            "data/public_emdat_custom_request_2026-02-06_cea875cc-70de-43f2-8f13-8ea7ba1cb3cb.xlsx"
   emdat_sheet:           "EM-DAT Data"
-  population_csv:        "data/world_bank_population.csv"
-  world_bank_income_xlsx: "data/world_bank_income.xlsx"
   who_sheet_name:  "WHO 2021"
   who_sheet_index: ~
-
+  population_csv:        "data/Population-EstimatesCSV.csv"
+  world_bank_income_xlsx: "data/world_class.xlsx"
+  
 figures:
   dpi:    300
   width:  10
