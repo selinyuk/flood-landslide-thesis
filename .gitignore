@@ -1,0 +1,16 @@
+# Generated outputs — committed as empty folders via .gitkeep
+# The scripts will populate these when run
+output/figures/*
+output/tables/*
+!output/figures/.gitkeep
+!output/tables/.gitkeep
+
+# R session artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# OS files
+.DS_Store
+Thumbs.db

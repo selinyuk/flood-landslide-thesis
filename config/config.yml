@@ -1,0 +1,14 @@
+project:
+  title: "Flood and Landslide Fatality Analysis, 2000-2025"
+  seed: 42
+
+paths:
+  emdat_xlsx:            "data/emdat.xlsx"
+  emdat_sheet:           "EM-DAT Data"
+  population_csv:        "data/world_bank_population.csv"
+  world_bank_income_xlsx: "data/world_bank_income.xlsx"
+
+figures:
+  dpi:    300
+  width:  10
+  height: 6
